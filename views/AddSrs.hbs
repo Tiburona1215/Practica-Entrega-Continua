@@ -1,0 +1,83 @@
+{{#if error}}
+  <div class="d-flex justify-content-center">
+    <div class="w-75 alert alert-danger">{{error}}</div>
+  </div>
+{{/if}}
+
+<div class="d-flex justify-content-center">
+  <div class="mb-2 w-75 shadow p-5 pb-4 pt-5 mt-5 text-white" style="background-color: rgba(50, 52, 58, 0.933);">
+    <form action="{{#if editar}}/editar/{{serie.id}}{{else}}/agregar{{/if}}" method="post">
+      
+      <div class="mb-4 ps-1 text-center">
+        <h1 style="font-size: 35px">{{#if editar}}Editar{{else}}Agregar serie{{/if}}</h1>
+      </div>
+
+      <div class="mb-3">
+        <label for="nombre">Nombre:</label>
+        <input 
+          value="{{#if editar}}{{serie.nombre}}{{/if}}" 
+          type="text" 
+          id="nombre" 
+          name="nombre" 
+          class="form-control" 
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label for="genero">Género:</label>
+        <select id="genero" name="genero" class="form-select" required>
+          {{#each generos}}
+            <option value="{{this.nombre}}" {{#if (eq this.nombre ../serie.genero.nombre)}}selected{{/if}}>
+              {{this.nombre}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="detalle">Descripción:</label>
+        <textarea 
+          class="form-control" 
+          id="detalle" 
+          name="detalle" 
+          rows="2" 
+          placeholder="Descripción"
+          required>{{serie.detalle}}</textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="imagen" class="form-label">Imagen:</label>
+        <input 
+          value="{{serie.imagen_portada}}" 
+          type="url" 
+          id="imagen" 
+          name="imagen" 
+          class="form-control" 
+          required>
+      </div>
+
+      <div class="mb-4">
+        <label for="enlace">Enlace:</label>
+        <input 
+          value="{{serie.video_url}}" 
+          type="url" 
+          id="enlace" 
+          name="enlace" 
+          class="form-control" 
+          required>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <a href="/PDatosS" class="btn btn-outline-primary">Volver</a>
+        <button 
+          type="submit" 
+          id="btna" 
+          class="btn btn-outline-primary" 
+          onclick="return confirm('¿Está seguro de que desea continuar?')">
+          {{#if editar}}Confirmar{{else}}Agregar{{/if}}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

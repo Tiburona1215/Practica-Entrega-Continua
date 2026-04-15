@@ -1,0 +1,194 @@
+[
+  {
+    "id": "1",
+    "nombre": "Friends",
+    "imagen_portada": "https://m.media-amazon.com/images/M/MV5BNDVkYjU0MzctMWRmZi00NTkxLTgwZWEtOWVhYjZlYjllYmU4XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX1000_.jpg",
+    "genero": "Comedia",
+    "video_url": "https://www.youtube.com/watch?v=hDNNmeeJs1Q",
+    "detalle": "Sigue las vidas y aventuras de seis amigos que viven en Manhattan."
+  },
+  {
+    "id": "2",
+    "nombre": "Peaky Blinders",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/6PX0r5TRRU5y0jZ70y1OtbLYmoD.jpg",
+    "genero": "Drama",
+    "video_url": "https://www.youtube.com/watch?v=oVzVdvGIC7U",
+    "detalle": "Una familia de gánsteres británicos asciende al poder en el Birmingham de la posguerra."
+  },
+  {
+    "id": "3",
+    "nombre": "Black Mirror",
+    "imagen_portada": "https://m.media-amazon.com/images/M/MV5BYTM3YWVhMDMtNjczMy00NGEyLWJhZDctYjNhMTRkNDE0ZTI1XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg",
+    "genero": "Ciencia ficción, Thriller",
+    "video_url": "https://www.youtube.com/watch?v=jDiYGjp5iFg",
+    "detalle": "Serie antológica que explora los aspectos oscuros de la tecnología y su impacto en la sociedad."
+  },
+  {
+    "id": "4",
+    "nombre": "The Big Bang Theory",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/ooBGRQBdbGzBxAVfExiO8r7kloA.jpg",
+    "genero": "Comedia",
+    "video_url": "https://www.youtube.com/watch?v=WBb3fojgW0Q",
+    "detalle": "Sigue las divertidas aventuras de un grupo de científicos socialmente torpes y su vecina."
+  },
+  {
+    "id": "5",
+    "nombre": "Money Heist",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg",
+    "genero": "Drama, Thriller",
+    "video_url": "https://www.youtube.com/watch?v=htqXL94Rza4",
+    "detalle": "Un grupo de ladrones planea y ejecuta el atraco más ambicioso de la historia de España."
+  },
+  {
+    "id": "6",
+    "nombre": "The Queen's Gambit",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/zU0htwkhNvBQdVSIKB9s6hgVeFK.jpg",
+    "genero": "Drama",
+    "video_url": "https://www.youtube.com/watch?v=CDrieqwSdgI",
+    "detalle": "Una joven prodigio del ajedrez lucha contra la adicción mientras busca convertirse en la mejor del mundo."
+  },
+  {
+    "id": "7",
+    "nombre": "Narcos",
+    "imagen_portada": "https://m.media-amazon.com/images/M/MV5BNmFjODU3YzgtMGUwNC00ZGI3LWFkZjQtMjkxZDc3NmQ1MzcyXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_FMjpg_UX1000_.jpg",
+    "genero": "Drama",
+    "video_url": "https://www.youtube.com/watch?v=xl8zdCY-abw",
+    "detalle": "La historia del auge y caída del cartel de Medellín y Pablo Escobar."
+  },
+  {
+    "id": "8",
+    "nombre": "The Handmaid's Tale",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/oIkxqt6ug5zT5ZSUUyc1Iqopf02.jpg",
+    "genero": "Drama",
+    "video_url": "https://www.youtube.com/watch?v=PJTonrzXTJs",
+    "detalle": "En un futuro distópico, una mujer es forzada a vivir como concubina bajo un régimen teocrático."
+  },
+  {
+    "id": "9",
+    "nombre": "Sherlock",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/7WTsnHkbA0FaG6R9twfFde0I9hl.jpg",
+    "genero": "Drama",
+    "video_url": "https://www.youtube.com/watch?v=qlcWFoNqZHc",
+    "detalle": "Una versión moderna del famoso detective Sherlock Holmes y su compañero el Dr. Watson."
+  },
+  {
+    "id": "10",
+    "nombre": "Westworld",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/6aj09UTMQNyfSfk0ZX8rYOEsXL2.jpg",
+    "genero": "Ciencia ficción, Thriller",
+    "video_url": "https://www.youtube.com/watch?v=eX3u0IlBBO4",
+    "detalle": "En un parque temático futurista, los androides comienzan a tomar conciencia de su existencia."
+  },
+  {
+    "id": "11",
+    "nombre": "Dexter",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/58H6Ctze1nnpS0s9vPmAAzPcipR.jpg",
+    "genero": "Drama, Thriller",
+    "video_url": "https://www.youtube.com/watch?v=YQeUmSD1c3g",
+    "detalle": "Un forense especializado en análisis de salpicaduras de sangre lleva una doble vida como asesino en serie."
+  },
+  {
+    "id": "12",
+    "nombre": "The Walking Dead",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg",
+    "genero": "Terror, Drama, Apocalíptico",
+    "video_url": "https://www.youtube.com/watch?v=R1v0uFms68U",
+    "detalle": "Un grupo de sobrevivientes intenta mantenerse con vida en un mundo postapocalíptico lleno de zombis."
+  },
+  {
+    "id": "13",
+    "nombre": "Better Call Saul",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/fC2HDm5t0kHl7mTm7jxMR31b7by.jpg",
+    "genero": "Drama, Crimen",
+    "video_url": "https://www.youtube.com/watch?v=HN4oydykJFc",
+    "detalle": "La historia del abogado Saul Goodman antes de convertirse en el conocido personaje de Breaking Bad."
+  },
+  {
+    "id": "15",
+    "nombre": "Fargo",
+    "imagen_portada": "https://m.media-amazon.com/images/M/MV5BN2NiMGE5M2UtNWNlNC00N2Y4LTkwOWUtMDlkMzEwNTcyOTcyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg",
+    "genero": "Crimen, Drama, Thriller",
+    "video_url": "https://www.youtube.com/watch?v=gT8R6JT3elQ",
+    "detalle": "Serie antológica inspirada en la película de los Coen, con historias de crimen en el medio oeste americano."
+  },
+  {
+    "id": "16",
+    "nombre": "Dark",
+    "imagen_portada": "https://m.media-amazon.com/images/M/MV5BOTk2NzUyOTctZDdlMS00MDJlLTgzNTEtNzQzYjFhNjA0YjBjXkEyXkFqcGdeQXVyMjg1NDcxNDE@._V1_FMjpg_UX1000_.jpg",
+    "genero": "Ciencia ficción, Drama, Misterio",
+    "video_url": "https://www.youtube.com/watch?v=rrwycJ08PSA",
+    "detalle": "La desaparición de un niño en un pueblo alemán expone los secretos y conexiones temporales de cuatro familias."
+  },
+  {
+    "id": "17",
+    "nombre": "Breaking Bad",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+    "genero": "Drama, Crimen",
+    "video_url": "https://www.youtube.com/watch?v=HhesaQXLuRY",
+    "detalle": "Un profesor de química se convierte en fabricante de metanfetaminas tras ser diagnosticado con cáncer terminal."
+  },
+  {
+    "id": "18",
+    "nombre": "Stranger Things",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg",
+    "genero": "Ciencia ficción, Misterio, Terror",
+    "video_url": "https://www.youtube.com/watch?v=b9EkMc79ZSU",
+    "detalle": "Un grupo de niños se enfrenta a fuerzas sobrenaturales en su pequeño pueblo mientras buscan a un amigo desaparecido."
+  },
+  {
+    "id": "19",
+    "nombre": "The Crown",
+    "imagen_portada": "https://resizing.flixster.com/5I_IExysrvUmg_ks6VeewMndA7U=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p14453812_b_h9_aa.jpg",
+    "genero": "Drama, Histórico",
+    "video_url": "https://www.youtube.com/watch?v=JWtnJjn6ng0",
+    "detalle": "La historia del reinado de la Reina Isabel II y los eventos que moldearon la segunda mitad del siglo XX."
+  },
+  {
+    "id": "20",
+    "nombre": "How I Met Your Mother",
+    "imagen_portada": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/559b4b05-9c8e-4e19-89d2-30a74febb0c0/compose?aspectRatio=1.78&format=webp&width=1200",
+    "genero": "Comedia, Romance",
+    "video_url": "https://www.youtube.com/watch?v=BSKQ7UPjzvU",
+    "detalle": "Un padre cuenta a sus hijos la historia de cómo conoció a su madre a través de sus divertidas aventuras con amigos."
+  },
+  {
+    "id": "21",
+    "nombre": "Chernobyl",
+    "imagen_portada": "https://image.tmdb.org/t/p/original/hlLXt2tOPT6RRnjiUmoxyG1LTFi.jpg",
+    "genero": "Drama, Histórico",
+    "video_url": "https://www.youtube.com/watch?v=s9APLXM9Ei8",
+    "detalle": "La miniserie relata la historia real del desastre nuclear de 1986 en la planta de Chernóbil, Ucrania."
+  },
+  {
+    "id": "22",
+    "nombre": "House of Cards",
+    "imagen_portada": "https://m.media-amazon.com/images/M/MV5BOWE1OTQ1NTQtNzBjOC00NDY3LWJlNjUtMWM0Y2YzZTUxYjZlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "genero": "Drama, Político",
+    "video_url": "https://www.youtube.com/watch?v=ULwUzF1q5w4",
+    "detalle": "Un político despiadado trama su ascenso al poder en Washington a través de manipulaciones y traiciones."
+  },
+  {
+    "id": "23",
+    "nombre": "Rick and Morty",
+    "imagen_portada": "https://m.media-amazon.com/images/M/MV5BZGQyZjk2MzMtMTcyNC00NGU3LTlmNjItNDExMWM4ZDFhYmQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "genero": "Animación, Ciencia ficción, Comedia",
+    "video_url": "https://www.youtube.com/watch?v=hl1U0bxTHbY",
+    "detalle": "Un científico loco y su nieto viven aventuras interdimensionales absurdas y caóticas."
+  },
+  {
+    "id": "24",
+    "nombre": "Lost",
+    "imagen_portada": "https://m.media-amazon.com/images/M/MV5BZmZhY2ViYzYtMTQ0NS00NDcyLWIxZTYtMGUyODE0NDA0NmNkXkEyXkFqcGc@._V1_.jpg",
+    "genero": "Drama, Misterio, Aventura",
+    "video_url": "https://www.youtube.com/watch?v=KTu8iDynwNc",
+    "detalle": "Los sobrevivientes de un accidente aéreo luchan por sobrevivir en una isla misteriosa llena de secretos oscuros."
+  },
+  {
+    "id": 25,
+    "nombre": "Dr.House",
+    "imagen_portada": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSawFsGpNdFfKX469a3Ep2n-KddGSm6zJUPHA&s",
+    "genero": "Drama",
+    "video_url": "https://www.youtube.com/watch?v=MczMB8nU1sY",
+    "detalle": "En el Princenton Plainsboro de Nueva Jersey, el Dr. Gregory House, un singular genio de la medicina, se encarga de resolver casos como lo haría Sherlock Holmes. De forma astuta juega con la psicología de la Dra. Lisa Cuddy, su mejor amigo, el oncólogo James Wilson, y del resto de su equipo de trabajo."
+  }
+]

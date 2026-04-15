@@ -1,0 +1,100 @@
+<div class="container mt-4">
+  <form method="get" action="/">
+    <div class="mb-4 d-flex justify-content-start align-items-center">
+      <label for="genero" class="text-white me-2 fw-bold fs-5">Filtrar por género:</label>
+      <select name="genero" id="genero" class="form-select w-auto" onchange="this.form.submit()">
+        <option value="">Todos</option>
+        {{#each generos}}
+          <option value="{{this.nombre}}" {{#if (eq this.nombre ../genero)}}selected{{/if}}>
+            {{this.nombre}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+  </form>
+
+  <div id="overlay-detalle" style="display: none; position: fixed; top: 0; left: 0; 
+      width: 100vw; height: 100vh; z-index: 9999; background-size: cover; 
+      background-position: center; background-repeat: no-repeat;">
+    
+    <div style="background-color: rgba(0,0,0,0.7); width: 100%; height: 100%; padding: 60px; overflow-y: auto;">
+      <button onclick="cerrarDetalle()" class="btn btn-danger position-absolute top-0 end-0 m-4">X</button>
+
+      <div class="text-white">
+        <h1 id="detalle-nombre" class="display-2 fw-bold mb-3"></h1>
+        <p><strong>Género:</strong> <span id="detalle-genero"></span></p>
+        <p id="detalle-texto" class="fs-5"></p>
+        <a id="detalle-video" href="#" target="_blank" class="btn btn-outline-light mt-3">
+          Ver tráiler
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {{#if series.length}}
+    <div class="row pt-3">
+      {{#each series}}
+        <div class="col-md-3 mb-4">
+          <div class="card bg-dark text-white h-100"> 
+            <img src="{{this.imagen_portada}}" class="card-img-top" 
+                 style="height: 200px; object-fit: cover;" alt="{{this.nombre}}">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="card-title">{{this.nombre}}</h5>
+                <p class="card-text">{{this.genero}}</p>
+              </div>
+              <a href="#" class="btn btn-light btn-sm ver-detalle mt-2"
+                data-nombre="{{this.nombre}}"
+                data-genero="{{this.genero}}"
+                data-imagen="{{this.imagen_portada}}"
+                data-detalle="{{this.detalle}}"
+                data-video="{{this.video_url}}">
+                Ver Detalle
+              </a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="p-4 mt-5">
+      <p class="text-white fs-4 fw-bold m-0">No se encontraron resultados.</p>
+    </div>
+  {{/if}}
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const botones = document.querySelectorAll(".ver-detalle");
+    const overlay = document.getElementById("overlay-detalle");
+    const nombre = document.getElementById("detalle-nombre");
+    const genero = document.getElementById("detalle-genero");
+    const texto = document.getElementById("detalle-texto");
+    const video = document.getElementById("detalle-video");
+
+    botones.forEach(btn => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        
+        const img = btn.getAttribute("data-imagen");
+        const titulo = btn.getAttribute("data-nombre");
+        const gen = btn.getAttribute("data-genero");
+        const desc = btn.getAttribute("data-detalle");
+        const url = btn.getAttribute("data-video");
+
+        overlay.style.backgroundImage = `url('${img}')`;
+        nombre.textContent = titulo;
+        genero.textContent = gen;
+        texto.textContent = desc;
+        video.href = url;
+
+        overlay.style.display = "block";
+      });
+    });
+  });
+
+  function cerrarDetalle() {
+    document.getElementById("overlay-detalle").style.display = "none";
+  }
+</script>

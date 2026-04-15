@@ -1,0 +1,60 @@
+{
+  "generos": [
+    {
+      "id": 1,
+      "nombre": "Ciencia ficción"
+    },
+    {
+      "id": 2,
+      "nombre": "Comedia"
+    },
+    {
+      "id": 3,
+      "nombre": "Drama"
+    },
+    {
+      "id": 4,
+      "nombre": "Fantasía"
+    },
+    {
+      "id": 5,
+      "nombre": "Terror"
+    },
+    {
+      "id": 6,
+      "nombre": "Apocalíptico"
+    },
+    {
+      "id": 7,
+      "nombre": "Animación "
+    },
+    {
+      "id": 8,
+      "nombre": "Thriller"
+    },
+    {
+      "id": 9,
+      "nombre": "Crimen"
+    },
+    {
+      "id": 10,
+      "nombre": "Histórico"
+    },
+    {
+      "id": 11,
+      "nombre": "Misterio"
+    },
+    {
+      "id": 12,
+      "nombre": "Romance"
+    },
+    {
+      "id": 13,
+      "nombre": "Político "
+    },
+    {
+      "id": 14,
+      "nombre": "Aventura"
+    }
+  ]
+}

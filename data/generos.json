@@ -1,0 +1,32 @@
+{
+  "generos": [
+    {
+      "id": 1,
+      "nombre": "Ciencia ficción"
+    },
+    {
+      "id": 2,
+      "nombre": "Comedia"
+    },
+    {
+      "id": 3,
+      "nombre": "Drama"
+    },
+    {
+      "id": 4,
+      "nombre": "Fantasía"
+    },
+    {
+      "id": 5,
+      "nombre": "Terror"
+    },
+    {
+      "id": 6,
+      "nombre": "Apocalíptico"
+    },
+    {
+      "id": 7,
+      "nombre": "BL"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+<div class="container-fluid p-5 ">
+
+<div class="ms-4">
+<div class="ms-5 ps-4">
+<a href="/agregargen" class="btn btn-success">Agregar nuevo genero</a>
+</div>
+
+<div class="row mt-4 ms-3">
+{{#each generos}}
+<div class="col-md-4 mb-4">
+
+ <div class="card text-white shadow text-center m-4" style="width: 300px; height:200px; background-color: rgba(15, 15, 15, 0.933);"> 
+    <div class="d-flex flex-column h-100 mt-5">
+        <h5 class="card-title" style="font-size: 40px;">{{this.nombre}}</h5>
+       
+
+       <div class="mt-5 mb-3 ms-2 gap-2 me-5">
+        <a href="/editar/{{this.id}}" class=" btn btn-warning btn-sm me-5">
+           Editar
+        </a>
+
+     <form action="/eliminargen/{{this.id}}" method="POST" style="display: inline;">
+    <button
+    type="submit"
+    class="btn btn-danger btn-sm ms-5" 
+    onclick="return confirm('¿Eliminar esta serie?')">
+     Eliminar
+    </button>
+    </form>
+       </div>
+
+    </div>
+ </div>  
+</div>
+
+{{/each}}
+
+</div>
+</div>
+
+</div>

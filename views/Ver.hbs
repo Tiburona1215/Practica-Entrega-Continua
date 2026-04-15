@@ -1,0 +1,19 @@
+<div class="container-fluid p-0" style="background-image: url('{{serie.imagen_portada}}'); background-size: cover; background-position: center; min-height: 100vh;">
+
+  <div class="container d-flex flex-column justify-content-center text-white" style="min-height: 100vh; background-color: rgba(0,0,0,0.6);">
+    <div class="px-5">
+
+      <h1 class="fw-bold display-1 mb-4">{{serie.nombre}}</h1>
+
+      <p class="lead fs-4" style="max-width: 700px;">
+        {{serie.detalle}}
+      </p>
+
+      <a href="{{serie.video_url}}" class="btn btn-danger btn-lg mt-3" style="max-width: 240px;">
+        <i class="bi bi-play-fill"></i> Ver Serie
+      </a>
+
+    </div>
+  </div>
+
+</div>

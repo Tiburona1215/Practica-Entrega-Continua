@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: webpelis_app
+    ports:
+      - "3121:3121"
+    volumes:
+      - .:/app
+    restart: always

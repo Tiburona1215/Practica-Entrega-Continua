@@ -1,0 +1,43 @@
+
+
+<div class="container-fluid p-5 ">
+
+<div class="ms-4">
+<div class="ms-5 ps-4">
+<a href="/agregar" class="btn btn-success">Agregar nueva serie</a>
+</div>
+
+ <div class="row mt-4 ms-3">
+{{#each series}}
+<div class="col-md-3 mb-4">
+
+ <div class="card text-white" style="width: 250px; background-color: rgba(15, 15, 15, 0.933);">
+
+    <img src="{{this.imagen_portada}}" class="img-fluid" style="height: 180px; object-fit: cover;" alt="{{this.nombre}}">
+    <div class="d-flex flex-column ms-3 mt-4">
+        <h5 class="card-title">{{this.nombre}}</h5>
+        <p class="card-text">{{this.genero}}</p>
+       
+       <div class="mt-auto mb-2">
+        <a href="/editar/{{this.id}}" class="btn btn-warning btn-sm me-5">
+           Editar
+        </a>
+     <form action="/eliminar/{{this.id}}" method="POST" style="display: inline;">
+    <button
+    type="submit"
+    class="btn btn-danger btn-sm ms-4" 
+    onclick="return confirm('¿Eliminar esta serie?')">
+     Eliminar
+    </button>
+    </form>
+       </div>
+    </div>
+ </div>  
+</div>
+
+{{/each}}
+
+</div>
+</div>
+
+</div>

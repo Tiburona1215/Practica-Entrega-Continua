@@ -1,0 +1,30 @@
+{{#if error}}
+<div class=" d-flex justify-content-center"><div class="w-75 alert alert-danger ">{{error}}</div></div>
+{{/if}}
+<div class="d-flex justify-content-center">
+
+     <div class="mb-2 w-75 shadow p-5 pb-4 pt-5 mt-5 text-white"  style="background-color: rgba(50, 52, 58, 0.933);" >
+
+    <form action={{#if editar}}/editargen/{{genero.id}}{{else}}/agregargen{{/if}} method="post">
+        <div class="mb-4 ps-1  text-center">
+            <h1 style="font-size: 35px">{{#if editar}}Editar{{else}} Agregar nuevo genero{{/if}}</h1>
+          </div>
+
+            <div class="mb-3">
+            <label for="nombre">Nombre: </label>
+            <input value="{{#if editar}}{{genero.nombre}}{{/if}}" type="text" id="nombre" name="nombre" class="form-control">
+            </div>
+
+         
+
+            <div class="d-flex justify-content-between">
+                <a href="/PDatos" class="btn btn-outline-primary">Volver</a>
+                <button type="submit" id="btna" class="btn btn-outline-primary " onclick="return confirm('Esta seguro de que desea continuar?')"> {{#if editar}}Guardar Cambios{{else}}Agregar{{/if}}</button>
+                
+            </div>
+          
+        </div>
+    </form>
+</div>
+</div>
+</div>
