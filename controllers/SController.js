@@ -121,7 +121,7 @@ const generos = result.rows;
      res.render('AddSrs', {
         tittle: 'addSerie',
         layout: 'FLayout',
-        generos: generos.generos
+        generos: generos
        
     });
 
