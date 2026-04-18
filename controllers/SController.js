@@ -210,7 +210,9 @@ export const EditarSerie = async (req, res) => {
 
   const serie = result.rows[0];
 
-    const generos=GetGeneros();
+    const resultGen = await pool.query("SELECT * FROM generos");
+    const generos = resultGen.rows;
+
  console.log("id:", id);
 
     if(!serie){
@@ -220,7 +222,7 @@ export const EditarSerie = async (req, res) => {
       res.render('AddSrs', {
         tittle: 'Editar Serie',
         layout: 'FLayout',
-        generos: generos.generos,
+        generos: generos,
         serie, 
         editar: true 
     });
