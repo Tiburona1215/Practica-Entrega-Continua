@@ -2,10 +2,10 @@
 // import { CrearSerie } from "../models/ModelS.js";
 // import { editarSerie } from "../models/ModelS.js";
 // import { eliminarSerie } from "../models/ModelS.js";
-import { GetGeneros } from "../models/GenerosM.js";
-import { CrearGenero } from "../models/GenerosM.js";
-import { editarGenero } from "../models/GenerosM.js";
-import { eliminarGenero } from "../models/GenerosM.js";
+// import { GetGeneros } from "../models/GenerosM.js";
+// import { CrearGenero } from "../models/GenerosM.js";
+// import { editarGenero } from "../models/GenerosM.js";
+// import { eliminarGenero } from "../models/GenerosM.js";
 import pool from "../data/db.js";
 
 export const renderSeriesPage = async (req, res) => {
@@ -62,25 +62,25 @@ export const renderMantSeries = async (req, res) => {
     });
 }
 
-export const renderMantgeneros=(req, res)=>{
-    console.log("Ruta /PDatos alcanzada");
-const datageneros=GetGeneros();
-const generos=datageneros.generos;
- const busqueda=req.query.busqueda;
+export const renderMantgeneros = async (req, res)=>{
+    const result = await pool.query("SELECT * FROM generos");
+    const generos = result.rows;
 
-  let generosFiltrados=generos;
-   if(busqueda)
-    {
-        const termbusqueda=busqueda.toLowerCase();
-        generosFiltrados= generos.filter(genero=>
-            genero.nombre && genero.nombre.toLowerCase().includes(termbusqueda) 
+    const busqueda = req.query.busqueda;
+
+    let generosFiltrados = generos;
+
+    if (busqueda) {
+        const term = busqueda.toLowerCase();
+        generosFiltrados = generos.filter(g =>
+            g.nombre && g.nombre.toLowerCase().includes(term)
         );
     }
-console.log(generosFiltrados)
-     res.render('PDatos', {
+
+    res.render('PDatos', {
         tittle: 'PersisDatos',
         generos: generosFiltrados,
-        busqueda:busqueda
+        busqueda
     });
 }
 
@@ -112,8 +112,8 @@ res.redirect('/PDatosS');
 };
 
 export const renderAgregarSeries = async (req,res)=>{
-const generos=GetGeneros();
-
+const result = await pool.query("SELECT * FROM generos");
+const generos = result.rows;
 
      res.render('AddSrs', {
         tittle: 'addSerie',
@@ -123,67 +123,77 @@ const generos=GetGeneros();
     });
 
 }
+
 export const renderAgregarGeneros = async (req,res)=>{
-    console.log("Entrando a /agregargen")
-const generos=GetGeneros();
+    const result = await pool.query("SELECT * FROM generos");
+    const generos = result.rows;
 
-
-     res.render('AddGenr', {
+    res.render('AddGenr', {
         tittle: 'addGenero',
         layout: 'FLayout',
-        generos: generos.generos
-       
+        generos
     });
-
 }
+
 export const GuardarGenero = async (req, res)=>{
-    const datosForm= req.body;
+    const { nombre } = req.body;
 
-const nuevoGenero={
-nombre: datosForm.nombre,
+    await pool.query(
+        "INSERT INTO generos (nombre) VALUES ($1)",
+        [nombre]
+    );
+
+    res.redirect('/PDatos');
 };
 
-CrearGenero(nuevoGenero);
- console.log("Se llamó a GuardarGenero"); 
- console.log(datosForm);
-res.redirect('/PDatos');
-};
+export const EditarGenero = async (req, res)=>{
+    const id = parseInt(req.params.id);
 
-export const EditarGenero= (req, res)=>{
-    const id= parseInt(req.params.id);
-    const Allgeneros=GetGeneros();
-    const genero= Allgeneros.generos.find(g=> parseInt(g.id)===id);
-    
- console.log("id:", id);
+    const result = await pool.query(
+        "SELECT * FROM generos WHERE id = $1",
+        [id]
+    );
+
+    const genero = result.rows[0];
+
     if(!genero){
-        return res.status(404).send('genero no encontrado');
+        return res.status(404).send('Genero no encontrado');
     }
 
-      res.render('AddGenr', {
+    res.render('AddGenr', {
         tittle: 'Editar genero',
         layout: 'FLayout',
-        genero, 
-        editar: true 
+        genero,
+        editar: true
     });
 };
 
 export const SaveEditGenero = async (req, res)=>{
-    const id= parseInt(req.params.id);
-    const Allgeneros=GetGeneros();
-  
-    const datosForm = req.body;
-    console.log(datosForm);
-    editarGenero(id, datosForm);
+    const id = parseInt(req.params.id);
+    const { nombre } = req.body;
+
+    await pool.query(
+        "UPDATE generos SET nombre = $1 WHERE id = $2",
+        [nombre, id]
+    );
+
     res.redirect('/PDatos');
 };
 
 export const EliminarGenero = async (req, res) => {
-    const id = req.params.id;
-    
-    if (eliminarGenero(id)) { // Llama al modelo
-        res.redirect('/PDatos'); // Redirige si fue exitoso
-    } else {
-        res.status(500).send('Error al eliminar la serie');
+    try {
+        const id = req.params.id;
+
+        await pool.query(
+            "DELETE FROM generos WHERE id = $1",
+            [id]
+        );
+
+        res.redirect('/PDatos');
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al eliminar el genero');
     }
 };
 

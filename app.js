@@ -31,6 +31,26 @@ if (parseInt(check.rows[0].count) === 0) {
   `);
 }
 
+await pool.query(`
+  CREATE TABLE IF NOT EXISTS generos (
+    id SERIAL PRIMARY KEY,
+    nombre TEXT
+  );
+`);
+
+const checkGen = await pool.query("SELECT COUNT(*) FROM generos");
+
+if (parseInt(checkGen.rows[0].count) === 0) {
+  await pool.query(`
+    INSERT INTO generos (nombre)
+    VALUES 
+      ('Drama'),
+      ('Comedia'),
+      ('Accion'),
+      ('Sci-Fi')
+  `);
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
