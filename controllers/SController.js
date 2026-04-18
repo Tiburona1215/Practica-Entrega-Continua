@@ -1,14 +1,16 @@
-import { GetSeries } from "../models/ModelS.js";
-import { CrearSerie } from "../models/ModelS.js";
-import { editarSerie } from "../models/ModelS.js";
-import { eliminarSerie } from "../models/ModelS.js";
+//import { GetSeries } from "../models/ModelS.js";
+// import { CrearSerie } from "../models/ModelS.js";
+// import { editarSerie } from "../models/ModelS.js";
+// import { eliminarSerie } from "../models/ModelS.js";
 import { GetGeneros } from "../models/GenerosM.js";
 import { CrearGenero } from "../models/GenerosM.js";
 import { editarGenero } from "../models/GenerosM.js";
 import { eliminarGenero } from "../models/GenerosM.js";
+import pool from "../data/db.js";
 
-export const renderSeriesPage= (req, res)=>{
-   const series= GetSeries();
+export const renderSeriesPage = async (req, res) => {
+   const result = await pool.query("SELECT * FROM series");
+   const series = result.rows;
    const datageneros=GetGeneros();
    const busqueda=req.query.busqueda;
    const genero= req.query.genero;
@@ -38,10 +40,11 @@ if(genero){
     });
 };
 
-export const renderMantSeries=(req,res)=>{
-     console.log("Ruta /PDatos alcanzada");
-const series=GetSeries();
- const busqueda=req.query.busqueda;
+export const renderMantSeries = async (req, res) => {
+  const result = await pool.query("SELECT * FROM series");
+  const series = result.rows;
+  
+ const busqueda = req.query.busqueda;
 
   let seriesFiltradas=series;
    if(busqueda)
@@ -81,7 +84,7 @@ console.log(generosFiltrados)
     });
 }
 
-export const GuardarSerie=(req, res)=>{
+export const GuardarSerie = async (req, res)=>{
     const datosForm= req.body;
 
 const nuevaserie={
@@ -92,13 +95,23 @@ video_url: datosForm.enlace,
 detalle: datosForm.detalle
 };
 
-CrearSerie(nuevaserie);
+await pool.query(
+  `INSERT INTO series (nombre, imagen_portada, genero, video_url, detalle)
+   VALUES ($1, $2, $3, $4, $5)`,
+  [
+    nuevaserie.nombre,
+    nuevaserie.imagen_portada,
+    nuevaserie.genero,
+    nuevaserie.video_url,
+    nuevaserie.detalle
+  ]
+);
  console.log("Se llamó a GuardarSerie"); 
  console.log(datosForm);
 res.redirect('/PDatosS');
 };
 
-export const renderAgregarSeries=(req,res)=>{
+export const renderAgregarSeries = async (req,res)=>{
 const generos=GetGeneros();
 
 
@@ -110,7 +123,7 @@ const generos=GetGeneros();
     });
 
 }
-export const renderAgregarGeneros=(req,res)=>{
+export const renderAgregarGeneros = async (req,res)=>{
     console.log("Entrando a /agregargen")
 const generos=GetGeneros();
 
@@ -123,7 +136,7 @@ const generos=GetGeneros();
     });
 
 }
-export const GuardarGenero=(req, res)=>{
+export const GuardarGenero = async (req, res)=>{
     const datosForm= req.body;
 
 const nuevoGenero={
@@ -154,7 +167,7 @@ export const EditarGenero= (req, res)=>{
     });
 };
 
-export const SaveEditGenero= (req, res)=>{
+export const SaveEditGenero = async (req, res)=>{
     const id= parseInt(req.params.id);
     const Allgeneros=GetGeneros();
   
@@ -164,7 +177,7 @@ export const SaveEditGenero= (req, res)=>{
     res.redirect('/PDatos');
 };
 
-export const EliminarGenero = (req, res) => {
+export const EliminarGenero = async (req, res) => {
     const id = req.params.id;
     
     if (eliminarGenero(id)) { // Llama al modelo
@@ -174,12 +187,19 @@ export const EliminarGenero = (req, res) => {
     }
 };
 
-export const EditarSerie= (req, res)=>{
-    const id= parseInt(req.params.id);
-    const AllSeries=GetSeries();
-    const serie= AllSeries.find(s=> parseInt(s.id)===id);
+export const EditarSerie = async (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const result = await pool.query(
+    "SELECT * FROM series WHERE id = $1",
+    [id]
+  );
+
+  const serie = result.rows[0];
+
     const generos=GetGeneros();
  console.log("id:", id);
+
     if(!serie){
         return res.status(404).send('serie no encontrada');
     }
@@ -193,26 +213,37 @@ export const EditarSerie= (req, res)=>{
     });
 };
 
-export const SaveEditSerie= (req, res)=>{
+export const SaveEditSerie = async (req, res)=>{
     const id= parseInt(req.params.id);
-    const AllSeries=GetSeries();
-    const index= AllSeries.findIndex(s=> parseInt(s.id)===id);
-  
-
-   if (index === -1) {
-        return res.status(404).send('Serie no encontrada');
-    }
-
     const datosForm = req.body;
-console.log(datosForm);
-    editarSerie(AllSeries, index, datosForm);
+
+    await pool.query(
+      `UPDATE series 
+       SET nombre=$1, imagen_portada=$2, genero=$3, video_url=$4, detalle=$5
+       WHERE id=$6`,
+      [
+        datosForm.nombre,
+        datosForm.imagen,
+        datosForm.genero,
+        datosForm.enlace,
+        datosForm.detalle,
+        id
+      ]
+    );
+
     res.redirect('/PDatosS');
 };
 
-export const renderDetalleSerie=(req,res)=>{
-    const id=req.params.id
-    const series= GetSeries();
-    const serie= series.find(s=> s.id===id);
+
+export const renderDetalleSerie = async (req, res) => {
+  const id = req.params.id;
+
+  const result = await pool.query(
+    "SELECT * FROM series WHERE id = $1",
+    [id]
+  );
+
+  const serie = result.rows[0];
 
     res.render('Ver',{
        tittle: serie.nombre,
@@ -220,12 +251,19 @@ export const renderDetalleSerie=(req,res)=>{
     });
 };
 
-export const EliminarSerie = (req, res) => {
-    const id = req.params.id;
-    
-    if (eliminarSerie(id)) { // Llama al modelo
-        res.redirect('/PDatosS'); // Redirige si fue exitoso
-    } else {
+export const EliminarSerie = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        await pool.query(
+            "DELETE FROM series WHERE id = $1",
+            [id]
+        );
+
+        res.redirect('/PDatosS');
+
+    } catch (error) {
+        console.error(error);
         res.status(500).send('Error al eliminar la serie');
     }
 };

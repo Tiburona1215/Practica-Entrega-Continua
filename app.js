@@ -6,6 +6,31 @@ import homeroute from "./routes/home.js";
 import { fileURLToPath } from 'url';
 const app = express();
 
+import pool from "./data/db.js";
+
+await pool.query(`
+  CREATE TABLE IF NOT EXISTS series (
+    id SERIAL PRIMARY KEY,
+    nombre TEXT,
+    imagen_portada TEXT,
+    genero TEXT,
+    video_url TEXT,
+    detalle TEXT
+  );
+`);
+
+const check = await pool.query("SELECT COUNT(*) FROM series");
+
+if (parseInt(check.rows[0].count) === 0) {
+  await pool.query(`
+    INSERT INTO series (nombre, imagen_portada, genero, video_url, detalle)
+    VALUES 
+      ('Breaking Bad', 'img1.jpg', 'Drama', 'link1', 'Descripcion 1'),
+      ('Dark', 'img2.jpg', 'Sci-Fi', 'link2', 'Descripcion 2'),
+      ('Friends', 'img3.jpg', 'Comedy', 'link3', 'Descripcion 3')
+  `);
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
