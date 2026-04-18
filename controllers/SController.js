@@ -11,33 +11,36 @@ import pool from "../data/db.js";
 export const renderSeriesPage = async (req, res) => {
    const result = await pool.query("SELECT * FROM series");
    const series = result.rows;
-   const datageneros=GetGeneros();
-   const busqueda=req.query.busqueda;
-   const genero= req.query.genero;
 
-   let seriesFiltradas=series;
-   if(busqueda)
-    {
-        const termbusqueda=busqueda.toLowerCase();
-        seriesFiltradas= series.filter(serie=>
-            serie.nombre && serie.nombre.toLowerCase().includes(termbusqueda) 
-        );
-    }
-if(genero){
-    const termgenero= genero.toLowerCase();
-    seriesFiltradas=series.filter(serie=>
-        serie.genero && serie.genero.toLowerCase().includes(termgenero)
-    )
-}
+   const resultGen = await pool.query("SELECT * FROM generos");
+   const datageneros = resultGen.rows;
 
+   const busqueda = req.query.busqueda;
+   const genero = req.query.genero;
 
-    res.render('index', {
-        tittle: 'ListaSeries',
-        series: seriesFiltradas,
-        generos: datageneros.generos,
-        busqueda:busqueda,
-        genero:genero
-    });
+   let seriesFiltradas = series;
+
+   if (busqueda) {
+       const term = busqueda.toLowerCase();
+       seriesFiltradas = series.filter(s =>
+           s.nombre && s.nombre.toLowerCase().includes(term)
+       );
+   }
+
+   if (genero) {
+       const term = genero.toLowerCase();
+       seriesFiltradas = series.filter(s =>
+           s.genero && s.genero.toLowerCase().includes(term)
+       );
+   }
+
+   res.render('index', {
+       tittle: 'ListaSeries',
+       series: seriesFiltradas,
+       generos: datageneros,
+       busqueda,
+       genero
+   });
 };
 
 export const renderMantSeries = async (req, res) => {
